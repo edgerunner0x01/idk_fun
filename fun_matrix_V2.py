@@ -12,17 +12,17 @@ def create_matrix(rows, cols, main_cell):
 def display(matrix):
     for row in matrix:
         print("\t",*row,)
-    print("\n"*2)
+    print("\n"*1)
 
 
         
 def show_stat(matrix,c,time,speed,main_cell):
     if c == 0:
-        print("\n"*3)
+        print("\n"*2)
         print("\t","Filled Matrix : ",len(matrix),"x",len(matrix[0]),"- Refresh Rate:",time,"ms","- Fill Speed:",speed,"- Main Cell: \'",main_cell,"\'")
         print("\n"*1)
     else:
-        print("\n"*3)
+        print("\n"*2)
         print("\t","Matrix:",len(matrix),"x",len(matrix[0]),"- Refresh Rate:",time,"ms","- Fill Speed:",speed,"- Main Cell: \'",main_cell,"\'")
         print("\n"*1)
         
@@ -60,6 +60,7 @@ def main():
     Matrix=create_matrix(rows,cols,main_cell)
     show_stat(Matrix,None,rr,speed,main_cell)
     display(Matrix);input()
+    system("cls")
     while not ( full(Matrix,main_cell) ):
         print("\033[H", end="")
         show_stat(Matrix,None,rr,speed,main_cell)
