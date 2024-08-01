@@ -61,13 +61,13 @@ def main():
     show_stat(Matrix,None,rr,speed,main_cell)
     display(Matrix);input()
     while not ( full(Matrix,main_cell) ):
-        system("cls")
+        print("\033[H", end="")
         show_stat(Matrix,None,rr,speed,main_cell)
         update(Matrix,speed,cute_emojis)
         display(Matrix)
         sleep(rr/1000)
 
-    system("cls")    
+    print("\033[H", end="")  
     show_stat(Matrix,0,rr,speed,main_cell)
     display(Matrix)
     exit()
