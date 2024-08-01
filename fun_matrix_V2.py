@@ -3,8 +3,6 @@ from time import sleep
 from random import randint
 from os import system
 
-cute_emojis = ["#"]
-
 
 def create_matrix(rows, cols, main_cell):
     return array([[main_cell]*cols]*rows)
@@ -28,8 +26,8 @@ def show_stat(matrix,c,time,speed,main_cell):
         
 def update(matrix,cells,load):
     for i in range(cells):
-        if not matrix[randint(0,len(matrix)-1)][randint(0,len(matrix[0])-1)] in load:
-            matrix[randint(0,len(matrix)-1)][randint(0,len(matrix[0])-1)]=str(load[len(load)-1])
+        if not matrix[randint(0,len(matrix)-1)][randint(0,len(matrix[0])-1)] == load:
+            matrix[randint(0,len(matrix)-1)][randint(0,len(matrix[0])-1)]=load
 
 def full(Matrix,cell):
     test=True
@@ -49,8 +47,9 @@ def main():
     rows = int(input("Matrix Rows: "))
     cols = int(input("Matrix Cols: "))
     rr = int(input("Refrech Rate in ms: "))
-    speed = int(input("Fill Speed: "))
+    speed = int(input("Fill Speed (cells to be changed each time): "))
     main_cell=str(input("Main Cell: "))
+    filler_cell=str(input("Filler Cell: "))
     while not (rows >= 10 and cols >= 10 and 0<=rr<=1000 and 1<=speed<=10000):
             rows = int(input("Matrix Rows: "))
             cols = int(input("Matrix Cols: "))
@@ -59,12 +58,12 @@ def main():
             
     Matrix=create_matrix(rows,cols,main_cell)
     show_stat(Matrix,None,rr,speed,main_cell)
-    display(Matrix);input()
+    display(Matrix);input("Press Enter to continue...")
     system("cls")
     while not ( full(Matrix,main_cell) ):
         print("\033[H", end="")
         show_stat(Matrix,None,rr,speed,main_cell)
-        update(Matrix,speed,cute_emojis)
+        update(Matrix,speed,filler_cell)
         display(Matrix)
         sleep(rr/1000)
 
